@@ -4,7 +4,7 @@ const record = [];
 let player;
 
 // Check Win
-setInterval(() => {
+const time = setInterval(() => {
 	checkWin(player);
 });
 
@@ -21,7 +21,6 @@ const user = () => {
 			computer();
 		}
 	});
-	console.log(time);
 };
 
 // Computer Function
@@ -37,19 +36,24 @@ const computer = () => {
 	user();
 };
 
-// Game Over
-
-const gameOver = player => {
-	if (player === 'O') {
-		$('#scoreboard').text('You Lose!');
-	} else {
-		$('#scoreboard').text('You Win!');
-	}
+// Play Again
+const playAgain = () => {
 	$('.square').css({ display: 'none' });
-
+	clearInterval(time);
 	setTimeout(() => {
 		location = location;
 	}, 1000);
+};
+
+// Game Over
+const gameOver = player => {
+	if (player === 'O') {
+		$('#scoreboard').text('You Lose!');
+		playAgain();
+	} else {
+		$('#scoreboard').text('You Win!');
+		playAgain();
+	}
 };
 
 // Check Status Function
@@ -102,9 +106,10 @@ const checkWin = player => {
 		$('#7').text() === player
 	) {
 		gameOver(player);
-	} else if (record.length > 8) {
+	} else if (record.length === 9) {
 		$('#scoreboard').text('Tie Game!');
 		$('.square').css({ display: 'none' });
+		clearInterval(time);
 		setTimeout(() => {
 			location = location;
 		}, 1000);
