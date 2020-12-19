@@ -119,7 +119,7 @@ const checkWin = player => {
 // Initialization
 const init = () => {
 	setTimeout(() => {
-		$('#scoreboard').text('Click a Button to Play.');
+		$('#scoreboard').text('Click a Button to Play');
 	}, 2000);
 	user();
 };
