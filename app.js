@@ -92,3 +92,14 @@ const checkWin = player => {
 		$('#scoreboard').text('Tie Game');
 	}
 };
+
+// Initialization
+const init = () => {
+	setTimeout(() => {
+		$('#scoreboard').text('Click a Button to Play.');
+	}, 2000);
+	user();
+};
+
+// Invocation
+init();
