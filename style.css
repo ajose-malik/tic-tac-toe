@@ -22,3 +22,34 @@ body {
 	padding: 10px;
 	box-shadow: 0px 2px 10px #2e3c46;
 }
+
+.row {
+	display: flex;
+	justify-content: center;
+	flex: wrap;
+	height: 100%;
+}
+
+.square {
+	width: 100%;
+	background-color: #2e3c46;
+	border-radius: 5px;
+	margin: 5px;
+	text-align: center;
+	box-shadow: 0px 0px 7px #cf6c10;
+	font-size: 5rem;
+	color: #cf6c10;
+}
+
+.square:hover {
+	background-color: #925f32;
+	cursor: pointer;
+}
+
+#scoreboard {
+	height: 50%;
+	text-align: center;
+	color: #cf6c10;
+	font-size: 2rem;
+	padding-top: 10px;
+}

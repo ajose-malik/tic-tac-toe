@@ -37,3 +37,58 @@ const computer = () => {
 	}, 1000);
 	user();
 };
+
+// Check Status Function
+const checkWin = player => {
+	if (
+		$('#1').text() === player &&
+		$('#2').text() === player &&
+		$('#3').text() === player
+	) {
+		$('#scoreboard').text(`${player} Wins.`);
+	} else if (
+		$('#4').text() === player &&
+		$('#5').text() === player &&
+		$('#6').text() === player
+	) {
+		$('#scoreboard').text(`${player} Wins.`);
+	} else if (
+		$('#7').text() === player &&
+		$('#8').text() === player &&
+		$('#9').text() === player
+	) {
+		$('#scoreboard').text(`${player} Wins.`);
+	} else if (
+		$('#1').text() === player &&
+		$('#4').text() === player &&
+		$('#7').text() === player
+	) {
+		$('#scoreboard').text(`${player} Wins.`);
+	} else if (
+		$('#2').text() === player &&
+		$('#5').text() === player &&
+		$('#8').text() === player
+	) {
+		$('#scoreboard').text(`${player} Wins.`);
+	} else if (
+		$('#3').text() === player &&
+		$('#6').text() === player &&
+		$('#9').text() === player
+	) {
+		$('#scoreboard').text(`${player} Wins.`);
+	} else if (
+		$('#1').text() === player &&
+		$('#5').text() === player &&
+		$('#9').text() === player
+	) {
+		$('#scoreboard').text(`${player} Wins.`);
+	} else if (
+		$('#3').text() === player &&
+		$('#5').text() === player &&
+		$('#7').text() === player
+	) {
+		$('#scoreboard').text(`${player} Wins.`);
+	} else if (record.length > 8) {
+		$('#scoreboard').text('Tie Game');
+	}
+};
