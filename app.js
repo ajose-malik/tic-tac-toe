@@ -20,3 +20,20 @@ const user = () => {
 		}
 	});
 };
+
+// Computer Function
+const computer = () => {
+	const player = 'O';
+	checkWin(player);
+	setTimeout(() => {
+		const rand = Math.floor(Math.random() * squareArr.length + 1);
+		if (record.includes(rand)) {
+			computer();
+		} else {
+			$(`#${rand}`).text('O').css('background', '#92a0ad');
+			record.push(rand);
+			checkWin(player);
+		}
+	}, 1000);
+	user();
+};
