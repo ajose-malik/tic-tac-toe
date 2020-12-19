@@ -1,41 +1,55 @@
 const squareArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const record = [];
 
+let player;
+
+// Check Win
+setInterval(() => {
+	checkWin(player);
+});
+
 // User Function
 const user = () => {
-	const player = 'X';
-	checkWin(player);
-	$('.row').click(e => {
+	player = 'X';
+	$('.square').click(e => {
 		const num = Number(e.target.id);
 		if (record.includes(num)) {
 			$('#scoreboard').text('Pick Another Square.');
-			setTimeout(() => {
-				$('#scoreboard').text('');
-			}, 2000);
 		} else {
-			$(e.target).text('X').css('background', '#92a0ad');
-			checkWin(player);
+			$(e.target).text('X').css('background', '#2e3c46');
 			record.push(num);
 			computer();
 		}
 	});
+	console.log(time);
 };
 
 // Computer Function
 const computer = () => {
-	const player = 'O';
-	checkWin(player);
-	setTimeout(() => {
-		const rand = Math.floor(Math.random() * squareArr.length + 1);
-		if (record.includes(rand)) {
-			computer();
-		} else {
-			$(`#${rand}`).text('O').css('background', '#92a0ad');
-			record.push(rand);
-			checkWin(player);
-		}
-	}, 1000);
+	player = 'O';
+	const rand = Math.floor(Math.random() * squareArr.length + 1);
+	if (record.includes(rand)) {
+		computer();
+	} else {
+		$(`#${rand}`).text('O').css('background', '#2e3c46');
+		record.push(rand);
+	}
 	user();
+};
+
+// Game Over
+
+const gameOver = player => {
+	if (player === 'O') {
+		$('#scoreboard').text('You Lose!');
+	} else {
+		$('#scoreboard').text('You Win!');
+	}
+	$('.square').css({ display: 'none' });
+
+	setTimeout(() => {
+		location = location;
+	}, 1000);
 };
 
 // Check Status Function
@@ -45,51 +59,55 @@ const checkWin = player => {
 		$('#2').text() === player &&
 		$('#3').text() === player
 	) {
-		$('#scoreboard').text(`${player} Wins.`);
+		gameOver(player);
 	} else if (
 		$('#4').text() === player &&
 		$('#5').text() === player &&
 		$('#6').text() === player
 	) {
-		$('#scoreboard').text(`${player} Wins.`);
+		gameOver(player);
 	} else if (
 		$('#7').text() === player &&
 		$('#8').text() === player &&
 		$('#9').text() === player
 	) {
-		$('#scoreboard').text(`${player} Wins.`);
+		gameOver(player);
 	} else if (
 		$('#1').text() === player &&
 		$('#4').text() === player &&
 		$('#7').text() === player
 	) {
-		$('#scoreboard').text(`${player} Wins.`);
+		gameOver(player);
 	} else if (
 		$('#2').text() === player &&
 		$('#5').text() === player &&
 		$('#8').text() === player
 	) {
-		$('#scoreboard').text(`${player} Wins.`);
+		gameOver(player);
 	} else if (
 		$('#3').text() === player &&
 		$('#6').text() === player &&
 		$('#9').text() === player
 	) {
-		$('#scoreboard').text(`${player} Wins.`);
+		gameOver(player);
 	} else if (
 		$('#1').text() === player &&
 		$('#5').text() === player &&
 		$('#9').text() === player
 	) {
-		$('#scoreboard').text(`${player} Wins.`);
+		gameOver(player);
 	} else if (
 		$('#3').text() === player &&
 		$('#5').text() === player &&
 		$('#7').text() === player
 	) {
-		$('#scoreboard').text(`${player} Wins.`);
+		gameOver(player);
 	} else if (record.length > 8) {
-		$('#scoreboard').text('Tie Game');
+		$('#scoreboard').text('Tie Game!');
+		$('.square').css({ display: 'none' });
+		setTimeout(() => {
+			location = location;
+		}, 1000);
 	}
 };
 
